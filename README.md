@@ -8,10 +8,11 @@ This project is a Spring Boot application that provides a REST API for managing 
 
 - Docker
 - Java 21
+- Git 
 
 ## Building and Running the Project with Docker
 
-1. **Build the JAR file:**
+1. **After cloning the project, move to base directory and build the JAR file:**
    ```sh
    ./mvnw clean package
 
