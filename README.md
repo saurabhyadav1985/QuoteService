@@ -16,17 +16,10 @@ This project is a Spring Boot application that provides a REST API for managing 
    ```sh
    ./mvnw clean package
 
-2. **Build the Docker image:**
+2. **Build and run app**
    ```sh
-   docker build -t quote-service .
+   docker compose up --build
 
-3. **Run the Docker container:**
-    ```sh
-    docker run -p 8080:8080 quote-service
-
-4. **Access the application:**
-   Open your browser and navigate to http://localhost:8080.
-
-5. **API Endpoints**
+3  **API Endpoints**
 Refer QuoteRequests.http file for API endpoints and sample requests.
    
