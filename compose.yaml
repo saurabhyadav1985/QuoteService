@@ -4,10 +4,12 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/quotesdb
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: password
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_DATASOURCE_USERNAME: ${DATABASE_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DATABASE_PASSWORD}
+      QUOTE_READER_USERNAME: ${QUOTE_READER_USER}
+      QUOTE_USER_PASSWORD: ${QUOTE_USER_PASSWORD}
+      QUOTE_ADMIN_USERNAME: ${QUOTE_ADMIN_USER}
+      QUOTE_ADMIN_PASSWORD: ${QUOTE_ADMIN_PASSWORD}
     depends_on:
       - db
 
@@ -15,8 +17,8 @@ services:
     image: postgres:15
     environment:
       POSTGRES_DB: quotesdb
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     ports:
       - "5432:5432"
     volumes:

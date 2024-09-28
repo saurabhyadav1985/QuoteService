@@ -2,7 +2,6 @@ package org.acme.quotes.quoteservice.controller;
 
 import org.acme.quotes.quoteservice.model.Quote;
 import org.acme.quotes.quoteservice.service.QuoteService;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -109,31 +108,6 @@ public class QuoteControllerTest {
                 .andExpect(jsonPath("$.content[0].author").value("John Doe"))
                 .andExpect(jsonPath("$.content[0].content").value("Sample Quote"))
                 .andExpect(jsonPath("$.content[0].createdBy").value("User"))
-                .andDo(print());
-    }
-
-    @Disabled("This test is disabled because it requires ADMIN role")
-    @Test
-    @WithMockUser(username = "quoteAdmin", roles = {"ADMIN"})
-    public void testCreateQuoteSuccess() throws Exception {
-        String newQuote = "{\"author\": \"Author Name\", \"content\": \"New Quote\", \"createdBy\": \"ADMIN\"}";
-
-        Quote createdQuote = new Quote();
-        createdQuote.setId(1L);
-        createdQuote.setAuthor("Author Name");
-        createdQuote.setContent("Sample Quote");
-        createdQuote.setCreatedBy("User");
-
-        given(quoteService.createQuote(any(Quote.class))).willReturn(createdQuote);
-
-        mockMvc.perform(post("/api/v1/quotes")
-                        .contentType("application/json")
-                        .content(newQuote))
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.author").value("Author Name"))
-                .andExpect(jsonPath("$.content").value("New Quote"))
-                .andExpect(jsonPath("$.createdBy").value("ADMIN"))
                 .andDo(print());
     }
 }

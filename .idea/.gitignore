@@ -45,7 +45,6 @@ out/
 
 # NetBeans
 nbproject/private/
-build/
 nbbuild/
 dist/
 nbdist/
@@ -53,3 +52,5 @@ nbdist/
 
 # VS Code
 .vscode/
+
+.env
