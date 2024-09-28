@@ -1,0 +1,14 @@
+### Create a Quote
+POST http://localhost:8080/api/v1/quotes
+Content-Type: application/json
+
+{
+  "author": "Saurabh",
+  "content": "This is a quote application."
+}
+
+### Get All Quotes (Paginated)
+GET http://localhost:8080/api/v1/quotes?page=0&size=5
+
+### Get Quotes by Author (Paginated)
+GET http://localhost:8080/api/v1/quotes/author?author=Saurabh&page=0&size=5
