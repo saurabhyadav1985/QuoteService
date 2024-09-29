@@ -15,11 +15,15 @@ This project is a Spring Boot application that provides a REST API for managing 
 1. **Move to base directory and give execute permission to scripts:**
    ```sh
    chmod +x build_and_run.sh
+   ```
    
    ```sh
    chmod +x stop_and_clean.sh
+   ```
 
-2. **Create .env file in base directory and select appropriate user and password**
+2. **For demo step 2.1 and 2.2 can be skipped as .env file is checked and defaults used, however is mandatory for other environments**
+
+   2.1 **Update .env file in base directory and choose appropriate user and password**
    ```text
    #Postgres DB credentials
    DATABASE_USER=pguser
@@ -31,24 +35,26 @@ This project is a Spring Boot application that provides a REST API for managing 
    
    #Quote API admin credentials
    QUOTE_ADMIN_USER=admin
-   QUOTE_ADMIN_PASSWORD=adminpasword
+   QUOTE_ADMIN_PASSWORD=adminpassword
+    ```
 
-3. **Build and run app**
-   ```sh
-   ./build_and_run.sh
-
-4. **Generate Base64 encoded string for user authentication**
+   2.2 **Generate Base64 encoded string for user authentication in quotes.http**
    ```sh
    #UserBase64EncoderString
    echo -n "User:Password" | base64
    ```
-   
+
    ```sh
    #AdminBase64EncoderString
    echo -n "Admin:Password" | base64 
    ```
+
+3. **Build and run app**
+   ```sh
+   ./build_and_run.sh
+   ```
    
-5. **API Endpoints**
+4. **API Endpoints**
 
 ### Create a Quote
 
@@ -57,3 +63,4 @@ Refer quotes.http file in the project for sample request and response. Update wi
 5. **Stop and clean app**
    ```sh
    ./stop_and_clean.sh
+   ```
