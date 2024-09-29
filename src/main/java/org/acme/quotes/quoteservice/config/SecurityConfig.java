@@ -44,7 +44,7 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails quoteReader = User.withDefaultPasswordEncoder()
+        UserDetails quoteReader = User.builder()
                 .username(userUsername)
                 .password(passwordEncoder().encode(userPassword))
                 .roles("USER")

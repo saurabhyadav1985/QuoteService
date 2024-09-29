@@ -12,15 +12,12 @@ This project is a Spring Boot application that provides a REST API for managing 
 
 ## Building and Running the Project with Docker
 
-1. **Move to base directory and build the JAR file:**
+1. **Move to base directory and give execute permission to scripts:**
    ```sh
-   ./mvnw clean package
+   chmod +x build_and_run.sh
+   chmod +x stop_and_clean.sh
 
-2. **Build and run app**
-   ```sh
-   docker build -t quote-service .  
-
-3. **Create .env file in base directory and select appropriate user and password**
+2. **Create .env file in base directory and select appropriate user and password**
    ```text
    #Postgres DB credentials
    DATABASE_USER=pguser
@@ -34,11 +31,11 @@ This project is a Spring Boot application that provides a REST API for managing 
    QUOTE_ADMIN_USER=admin
    QUOTE_ADMIN_PASSWORD=adminpasword
 
-4. **Start the application**
+3. **Build and run app**
    ```sh
-   docker compose up
+   ./build_and_run.sh
 
-5. **API Endpoints**
+4. **API Endpoints**
 
 ### Create a Quote
 
@@ -46,8 +43,8 @@ POST http://localhost:8080/api/v1/quotes
 Content-Type: application/json
 
 {
-"author": "Saurabh",
-"content": "This is a quote application."
+"author": "Jeff Winger",
+"content": "What makes humans different from other animals? We're the only species on earth that observes Shark Week. Sharks don't even observe Shark Week, but we do."
 }
 
 ### Get All Quotes (Paginated)
@@ -56,5 +53,8 @@ GET http://localhost:8080/api/v1/quotes?page=0&size=5
 
 ### Get Quotes by Author (Paginated)
 
-GET http://localhost:8080/api/v1/quotes/author?author=Saurabh&page=0&size=5
+GET http://localhost:8080/api/v1/quotes/author?author=Jeff%20Winger&page=0&size=5
    
+5. **Stop and clean app**
+   ```sh
+   ./stop_and_clean.sh
