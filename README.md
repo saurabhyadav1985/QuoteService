@@ -56,9 +56,7 @@ This project is a Spring Boot application that provides a REST API for managing 
    
 4. **API Endpoints**
 
-### Create a Quote
-
-Refer quotes.http file in the project for sample request and response. Update with base64 encoded string for user and admin authentication.
+   Refer quotes.http file in the project for sample request and response. Update with base64 encoded string for user and admin authentication.
    
 5. **Stop and clean app**
    ```sh
