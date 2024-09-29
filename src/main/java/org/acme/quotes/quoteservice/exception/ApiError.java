@@ -1,6 +1,5 @@
 package org.acme.quotes.quoteservice.exception;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 import org.springframework.http.HttpStatus;

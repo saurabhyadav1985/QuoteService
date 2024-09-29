@@ -1,9 +1,6 @@
 package org.acme.quotes.quoteservice.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -12,6 +9,9 @@ import lombok.experimental.FieldDefaults;
 @Entity
 @Data
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE)
+@Table(name = "quote", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"author", "content"})
+})
 public class Quote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

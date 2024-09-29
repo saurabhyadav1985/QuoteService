@@ -33,7 +33,7 @@ public class JacksonConfig {
     private static class PageImplDeserializer extends JsonDeserializer<PageImpl<Quote>> {
 
         @Override
-        public PageImpl<Quote> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+        public PageImpl<Quote> deserialize(JsonParser p, DeserializationContext context) throws IOException {
             ObjectMapper mapper = (ObjectMapper) p.getCodec();
             JsonNode node = mapper.readTree(p);
             JsonNode content = node.get("content");
