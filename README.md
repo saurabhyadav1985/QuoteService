@@ -35,11 +35,19 @@ This project is a Spring Boot application that provides a REST API for managing 
    ```sh
    ./build_and_run.sh
 
-4. **API Endpoints**
+4. **Generate Base64 encoded string for user authentication**
+   ```sh
+   #UserBase64EncoderString
+   echo -n "User:Password" | base64
+   
+   #AdminBase64EncoderString
+   echo -n "Admin:Password" | base64 
+   
+5. **API Endpoints**
 
 ### Create a Quote
 
-POST http://localhost:8080/api/v1/quotes
+POST http://localhost:8080/api/v1/quotes Authorization: Basic <AdminBase64EncoderString>
 Content-Type: application/json
 
 {
@@ -49,11 +57,11 @@ Content-Type: application/json
 
 ### Get All Quotes (Paginated)
 
-GET http://localhost:8080/api/v1/quotes?page=0&size=5
+GET http://localhost:8080/api/v1/quotes?page=0&size=5 Authorization: Basic <UserBase64EncoderString>
 
 ### Get Quotes by Author (Paginated)
 
-GET http://localhost:8080/api/v1/quotes/author?author=Jeff%20Winger&page=0&size=5
+GET http://localhost:8080/api/v1/quotes/author?author=Jeff%20Winger&page=0&size=5 Authorization: Basic <UserBase64EncoderString>
    
 5. **Stop and clean app**
    ```sh
