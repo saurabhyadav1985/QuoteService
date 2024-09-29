@@ -1,0 +1,26 @@
+
+###
+**API Endpoints**
+
+
+### Create a Quote
+
+POST http://localhost:8080/api/v1/quotes
+Authorization: Basic YWRtaW46YWRtaW5wYXNzd29yZA==
+Content-Type: application/json
+
+{
+  "author": "Jeff Winger",
+  "content": "What makes humans different from other animals? We're the only species on earth that observes Shark Week. Sharks don't even observe Shark Week, but we do."
+}
+
+
+### Get All Quotes (Paginated)
+
+GET http://localhost:8080/api/v1/quotes?page=0&size=5
+Authorization: Basic cXJ1c2VyOnFycGFzc3dvcmQ=
+
+### Get Quotes by Author (Paginated)
+
+GET http://localhost:8080/api/v1/quotes/author?author=Jeff%20Winger&page=0&size=5
+Authorization: Basic cXJ1c2VyOnFycGFzc3dvcmQ=

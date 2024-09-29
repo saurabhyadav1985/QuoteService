@@ -15,6 +15,8 @@ This project is a Spring Boot application that provides a REST API for managing 
 1. **Move to base directory and give execute permission to scripts:**
    ```sh
    chmod +x build_and_run.sh
+   
+   ```sh
    chmod +x stop_and_clean.sh
 
 2. **Create .env file in base directory and select appropriate user and password**
@@ -39,29 +41,18 @@ This project is a Spring Boot application that provides a REST API for managing 
    ```sh
    #UserBase64EncoderString
    echo -n "User:Password" | base64
+   ```
    
+   ```sh
    #AdminBase64EncoderString
    echo -n "Admin:Password" | base64 
+   ```
    
 5. **API Endpoints**
 
 ### Create a Quote
 
-POST http://localhost:8080/api/v1/quotes Authorization: Basic <AdminBase64EncoderString>
-Content-Type: application/json
-
-{
-"author": "Jeff Winger",
-"content": "What makes humans different from other animals? We're the only species on earth that observes Shark Week. Sharks don't even observe Shark Week, but we do."
-}
-
-### Get All Quotes (Paginated)
-
-GET http://localhost:8080/api/v1/quotes?page=0&size=5 Authorization: Basic <UserBase64EncoderString>
-
-### Get Quotes by Author (Paginated)
-
-GET http://localhost:8080/api/v1/quotes/author?author=Jeff%20Winger&page=0&size=5 Authorization: Basic <UserBase64EncoderString>
+Refer quotes.http file in the project for sample request and response. Update with base64 encoded string for user and admin authentication.
    
 5. **Stop and clean app**
    ```sh
