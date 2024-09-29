@@ -1,12 +1,11 @@
-package org.acme.quotes.quoteservice.service;
+package org.acme.quotehub.service;
 
-import org.acme.quotes.quoteservice.model.Quote;
-import org.acme.quotes.quoteservice.repository.QuoteRepository;
+import org.acme.quotehub.model.Quote;
+import org.acme.quotehub.repository.QuoteRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;

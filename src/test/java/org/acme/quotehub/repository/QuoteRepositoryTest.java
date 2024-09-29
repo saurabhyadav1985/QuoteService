@@ -1,6 +1,6 @@
-package org.acme.quotes.quoteservice.repository;
+package org.acme.quotehub.repository;
 
-import org.acme.quotes.quoteservice.model.Quote;
+import org.acme.quotehub.model.Quote;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

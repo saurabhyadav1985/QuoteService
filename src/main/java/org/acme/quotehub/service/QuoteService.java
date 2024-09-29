@@ -1,10 +1,10 @@
-package org.acme.quotes.quoteservice.service;
+package org.acme.quotehub.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.acme.quotes.quoteservice.exception.QuoteServiceException;
-import org.acme.quotes.quoteservice.model.Quote;
-import org.acme.quotes.quoteservice.repository.QuoteRepository;
+import org.acme.quotehub.exception.QuoteHubException;
+import org.acme.quotehub.model.Quote;
+import org.acme.quotehub.repository.QuoteRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class QuoteService {
             return createdQuote;
         } catch (Exception e) {
             log.error("Error creating quote: {}", e.getMessage());
-            throw new QuoteServiceException("Failed to create quote", e);
+            throw new QuoteHubException("Failed to create quote", e);
         }
     }
 
@@ -36,7 +36,7 @@ public class QuoteService {
             return quotes;
         } catch (Exception e) {
             log.error("Error fetching all quotes: {}", e.getMessage());
-            throw new QuoteServiceException("Failed to fetch quotes", e);
+            throw new QuoteHubException("Failed to fetch quotes", e);
         }
     }
 
@@ -48,7 +48,7 @@ public class QuoteService {
             return quotes;
         } catch (Exception e) {
             log.error("Error fetching quotes by author: {}", e.getMessage());
-            throw new QuoteServiceException("Failed to fetch quotes by author", e);
+            throw new QuoteHubException("Failed to fetch quotes by author", e);
         }
     }
 }

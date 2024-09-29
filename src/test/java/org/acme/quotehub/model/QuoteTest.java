@@ -1,4 +1,4 @@
-package org.acme.quotes.quoteservice.model;
+package org.acme.quotehub.model;
 
 import org.junit.jupiter.api.Test;
 

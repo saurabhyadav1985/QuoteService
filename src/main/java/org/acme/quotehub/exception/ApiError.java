@@ -1,4 +1,4 @@
-package org.acme.quotes.quoteservice.exception;
+package org.acme.quotehub.exception;
 
 import lombok.Data;
 import lombok.NonNull;

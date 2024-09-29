@@ -1,7 +1,7 @@
-package org.acme.quotes.quoteservice.controller;
+package org.acme.quotehub.controller;
 
-import org.acme.quotes.quoteservice.model.Quote;
-import org.acme.quotes.quoteservice.service.QuoteService;
+import org.acme.quotehub.model.Quote;
+import org.acme.quotehub.service.QuoteService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

@@ -1,6 +1,6 @@
-package org.acme.quotes.quoteservice;
+package org.acme.quotehub;
 
-import org.acme.quotes.quoteservice.model.Quote;
+import org.acme.quotehub.model.Quote;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Testcontainers
 @ActiveProfiles("test")
-public class QuoteServiceIntegrationTest {
+public class QuoteHubIntegrationTest {
 
     @SuppressWarnings("resource")
     @Container

@@ -1,4 +1,4 @@
-package org.acme.quotes.quoteservice.exception;
+package org.acme.quotehub.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolationException;
@@ -19,8 +19,8 @@ import java.util.HashMap;
 @Slf4j
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(QuoteServiceException.class)
-    public ResponseEntity<ApiError> handleCustomServiceException(QuoteServiceException ex) {
+    @ExceptionHandler(QuoteHubException.class)
+    public ResponseEntity<ApiError> handleCustomServiceException(QuoteHubException ex) {
         log.error("Quote service exception: {}", ex.getMessage());
         var apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
         return new ResponseEntity<>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);

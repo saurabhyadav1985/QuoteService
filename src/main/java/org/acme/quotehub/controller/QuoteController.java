@@ -1,11 +1,11 @@
-package org.acme.quotes.quoteservice.controller;
+package org.acme.quotehub.controller;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.acme.quotes.quoteservice.model.Quote;
-import org.acme.quotes.quoteservice.service.QuoteService;
-import org.acme.quotes.quoteservice.util.SecurityUtils;
+import org.acme.quotehub.model.Quote;
+import org.acme.quotehub.service.QuoteService;
+import org.acme.quotehub.util.SecurityUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

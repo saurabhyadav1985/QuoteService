@@ -1,4 +1,4 @@
-package org.acme.quotes.quoteservice.util;
+package org.acme.quotehub.util;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 

@@ -1,4 +1,4 @@
-package org.acme.quotes.quoteservice.model;
+package org.acme.quotehub.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
