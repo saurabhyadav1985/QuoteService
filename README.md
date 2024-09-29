@@ -21,19 +21,6 @@ utilizes Spring Boot and a PostgreSQL database.
    environments**
 
    2.1 **Update .env file in base directory and choose appropriate user and password**
-   ```text
-   #Postgres DB credentials
-   DATABASE_USER=pguser
-   DATABASE_PASSWORD=pgpassword
-   
-   #Quote API user credentials
-   QUOTE_READER_USER=qruser
-   QUOTE_READER_PASSWORD=qrpassword
-   
-   #Quote API admin credentials
-   QUOTE_ADMIN_USER=admin
-   QUOTE_ADMIN_PASSWORD=adminpassword
-    ```
 
    2.2 **Generate Base64 encoded string for user authentication in quotes.http**
    ```sh
