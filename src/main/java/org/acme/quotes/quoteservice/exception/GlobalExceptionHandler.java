@@ -19,6 +19,13 @@ import java.util.HashMap;
 @Slf4j
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(QuoteServiceException.class)
+    public ResponseEntity<ApiError> handleCustomServiceException(QuoteServiceException ex) {
+        log.error("Quote service exception: {}", ex.getMessage());
+        var apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
+        return new ResponseEntity<>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> handleValidationExceptions(MethodArgumentNotValidException ex) {
         log.error("Validation exception: {}", ex.getMessage());
@@ -28,28 +35,28 @@ public class GlobalExceptionHandler {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, errors.toString());
+        var apiError = new ApiError(HttpStatus.BAD_REQUEST, errors.toString());
         return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public ResponseEntity<ApiError> handleMethodNotSupportedException(HttpRequestMethodNotSupportedException ex) {
         log.error("Method not supported exception: {}", ex.getMessage());
-        ApiError apiError = new ApiError(HttpStatus.METHOD_NOT_ALLOWED, "Method not supported");
+        var apiError = new ApiError(HttpStatus.METHOD_NOT_ALLOWED, "Method not supported");
         return new ResponseEntity<>(apiError, HttpStatus.METHOD_NOT_ALLOWED);
     }
 
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     public ResponseEntity<ApiError> handleMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException ex) {
         log.error("Media type not supported exception: {}", ex.getMessage());
-        ApiError apiError = new ApiError(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Media type not supported");
+        var apiError = new ApiError(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Media type not supported");
         return new ResponseEntity<>(apiError, HttpStatus.UNSUPPORTED_MEDIA_TYPE);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ApiError> handleMessageNotReadableException(HttpMessageNotReadableException ex) {
         log.error("Message not readable exception: {}", ex.getMessage());
-        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, "Message not readable");
+        var apiError = new ApiError(HttpStatus.BAD_REQUEST, "Message not readable");
         return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
     }
 
@@ -62,14 +69,14 @@ public class GlobalExceptionHandler {
             String errorMessage = violation.getMessage();
             errors.put(fieldName, errorMessage);
         });
-        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, errors.toString());
+        var apiError = new ApiError(HttpStatus.BAD_REQUEST, errors.toString());
         return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<ApiError> handleEntityNotFoundException(EntityNotFoundException ex) {
         log.error("Entity not found exception: {}", ex.getMessage());
-        ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, "Entity not found");
+        var apiError = new ApiError(HttpStatus.NOT_FOUND, "Entity not found");
         return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
     }
 }

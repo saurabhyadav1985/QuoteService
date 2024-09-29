@@ -2,6 +2,7 @@ package org.acme.quotes.quoteservice.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.acme.quotes.quoteservice.exception.QuoteServiceException;
 import org.acme.quotes.quoteservice.model.Quote;
 import org.acme.quotes.quoteservice.repository.QuoteRepository;
 import org.springframework.data.domain.Page;
@@ -17,22 +18,37 @@ public class QuoteService {
 
     public Quote createQuote(Quote quote) {
         log.info("Creating quote: {}", quote);
-        var createdQuote = quoteRepository.save(quote);
-        log.info("Created quote: {}", createdQuote);
-        return createdQuote;
+        try {
+            var createdQuote = quoteRepository.save(quote);
+            log.info("Created quote: {}", createdQuote);
+            return createdQuote;
+        } catch (Exception e) {
+            log.error("Error creating quote: {}", e.getMessage());
+            throw new QuoteServiceException("Failed to create quote", e);
+        }
     }
 
     public Page<Quote> getAllQuotes(Pageable pageable) {
         log.info("Fetching all quotes with pageable: {}", pageable);
-        var quotes = quoteRepository.findAll(pageable);
-        log.info("Fetched quotes: {}", quotes);
-        return quotes;
+        try {
+            var quotes = quoteRepository.findAll(pageable);
+            log.info("Fetched quotes: {}", quotes);
+            return quotes;
+        } catch (Exception e) {
+            log.error("Error fetching all quotes: {}", e.getMessage());
+            throw new QuoteServiceException("Failed to fetch quotes", e);
+        }
     }
 
     public Page<Quote> getQuotesByAuthor(String author, Pageable pageable) {
         log.info("Fetching quotes by author: {} with pageable: {}", author, pageable);
-        var quotes = quoteRepository.findByAuthor(author, pageable);
-        log.info("Fetched quotes by author: {}", quotes);
-        return quotes;
+        try {
+            var quotes = quoteRepository.findByAuthor(author, pageable);
+            log.info("Fetched quotes by author: {}", quotes);
+            return quotes;
+        } catch (Exception e) {
+            log.error("Error fetching quotes by author: {}", e.getMessage());
+            throw new QuoteServiceException("Failed to fetch quotes by author", e);
+        }
     }
 }
