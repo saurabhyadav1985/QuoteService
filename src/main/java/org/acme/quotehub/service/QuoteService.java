@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.acme.quotehub.exception.QuoteHubException;
 import org.acme.quotehub.model.Quote;
 import org.acme.quotehub.repository.QuoteRepository;
+import org.acme.quotehub.util.SecurityUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ public class QuoteService {
 
     public Quote createQuote(Quote quote) {
         log.info("Creating quote: {}", quote);
+        quote.setCreatedBy(SecurityUtils.getAuthenticatedUser());
         try {
             var createdQuote = quoteRepository.save(quote);
             log.info("Created quote: {}", createdQuote);

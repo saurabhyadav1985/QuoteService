@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.acme.quotehub.model.Quote;
 import org.acme.quotehub.service.QuoteService;
-import org.acme.quotehub.util.SecurityUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -23,7 +22,6 @@ public class QuoteController {
     @PostMapping
     public ResponseEntity<Quote> createQuote(@Valid @RequestBody Quote quote) {
         log.info("Entering createQuote with quote: {}", quote);
-        quote.setCreatedBy(SecurityUtils.getAuthenticatedUser());
         var createdQuote = quoteService.createQuote(quote);
         log.info("Returning created quote: {}", createdQuote);
         return new ResponseEntity<>(createdQuote, HttpStatus.CREATED);
