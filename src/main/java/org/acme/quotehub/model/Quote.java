@@ -1,9 +1,7 @@
 package org.acme.quotehub.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
 @Entity
@@ -17,14 +15,9 @@ public class Quote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @NotEmpty(message = "Author is mandatory")
-    @Size(max = 100, message = "Author name must be less than 100 characters")
     String author;
 
-    @NotEmpty(message = "Content is mandatory")
-    @Size(max = 500, message = "Content must be less than 500 characters")
     String content;
 
-    @Size(max = 100, message = "Created by must be less than 100 characters")
     String createdBy;
 }

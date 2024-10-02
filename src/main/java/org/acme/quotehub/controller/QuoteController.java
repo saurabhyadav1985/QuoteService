@@ -3,7 +3,8 @@ package org.acme.quotehub.controller;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.acme.quotehub.model.Quote;
+import org.acme.quotehub.dto.QuoteRequest;
+import org.acme.quotehub.dto.QuoteResponse;
 import org.acme.quotehub.service.QuoteService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +21,7 @@ public class QuoteController {
     private final QuoteService quoteService;
 
     @PostMapping
-    public ResponseEntity<Quote> createQuote(@Valid @RequestBody Quote quote) {
+    public ResponseEntity<QuoteResponse> createQuote(@Valid @RequestBody QuoteRequest quote) {
         log.info("Entering createQuote with quote: {}", quote);
         var createdQuote = quoteService.createQuote(quote);
         log.info("Returning created quote: {}", createdQuote);
@@ -28,7 +29,7 @@ public class QuoteController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Quote>> getAllQuotes(Pageable pageable) {
+    public ResponseEntity<Page<QuoteResponse>> getAllQuotes(Pageable pageable) {
         log.info("Entering getAllQuotes with pageable: {}", pageable);
         var quotes = quoteService.getAllQuotes(pageable);
         log.info("Returning quotes: {}", quotes);
@@ -36,7 +37,7 @@ public class QuoteController {
     }
 
     @GetMapping("/author")
-    public ResponseEntity<Page<Quote>> getQuotesByAuthor(@RequestParam String author, Pageable pageable) {
+    public ResponseEntity<Page<QuoteResponse>> getQuotesByAuthor(@RequestParam String author, Pageable pageable) {
         log.info("Entering getQuotesByAuthor with author: {} and pageable: {}", author, pageable);
         var quotes = quoteService.getQuotesByAuthor(author, pageable);
         log.info("Returning quotes by author: {}", quotes);
